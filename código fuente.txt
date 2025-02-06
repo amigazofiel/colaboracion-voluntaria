@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Colaboración Voluntaria</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      text-align: center;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
+      width: 100%;
+    }
+
+    h1 {
+      color: #28a745;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    button {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    .footer {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Colaboración Voluntaria</h1>
+    <p>
+      ¡Gracias por tu interés en nuestro sistema de colaboración! Con una contribución única de $5, podrás acceder a una herramienta poderosa que te permitirá generar ingresos de manera sencilla y replicable.
+    </p>
+    <p>
+      <strong>¿Cómo funciona?</strong><br>
+      - Colaboras con $5.<br>
+      - $3 van directamente a tu cuenta.<br>
+      - $2 van al creador del sistema.<br>
+      - Obtienes el código para replicar el sistema y seguir generando ingresos.
+    </p>
+    <button id="collaborateButton">Colaborar con $5</button>
+    <div class="footer">
+      * Al colaborar, aceptas los términos y condiciones del sistema.
+    </div>
+  </div>
+
+  <script>
+    // URL de la pasarela de pago del creador (tus 2 dólares)
+    const creatorPaymentLink = "https://www.paypal.com/paypalme/tuusuario/2USD";
+
+    // URL de la pasarela de pago del usuario (sus 3 dólares)
+    let userPaymentLink = "";
+
+    // Función para iniciar la colaboración
+    document.getElementById("collaborateButton").addEventListener("click", function () {
+      // Solicitar al usuario su enlace de pago (para recibir sus 3 dólares)
+      userPaymentLink = prompt("Por favor, ingresa tu enlace de pago (PayPal, Stripe, etc.) para recibir tus $3:");
+
+      if (userPaymentLink) {
+        // Redirigir al usuario para completar la colaboración de $5
+        alert("Redirigiendo para completar tu colaboración de $5...");
+        window.location.href = creatorPaymentLink; // Primero se pagan los $2 al creador
+      } else {
+        alert("Debes ingresar un enlace de pago válido para continuar.");
+      }
+    });
+
+    // Simular la descarga automática después de la colaboración
+    function simulateDownload() {
+      const content = `
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Colaboración Voluntaria</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      text-align: center;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
+      width: 100%;
+    }
+
+    h1 {
+      color: #28a745;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    button {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    .footer {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Colaboración Voluntaria</h1>
+    <p>
+      ¡Gracias por tu interés en nuestro sistema de colaboración! Con una contribución única de $5, podrás acceder a una herramienta poderosa que te permitirá generar ingresos de manera sencilla y replicable.
+    </p>
+    <p>
+      <strong>¿Cómo funciona?</strong><br>
+      - Colaboras con $5.<br>
+      - $3 van directamente a tu cuenta.<br>
+      - $2 van al creador del sistema.<br>
+      - Obtienes el código para replicar el sistema y seguir generando ingresos.
+    </p>
+    <button id="collaborateButton">Colaborar con $5</button>
+    <div class="footer">
+      * Al colaborar, aceptas los términos y condiciones del sistema.
+    </div>
+  </div>
+
+  <script>
+    // URL de la pasarela de pago del creador (tus 2 dólares)
+    const creatorPaymentLink = "${creatorPaymentLink}";
+
+    // URL de la pasarela de pago del usuario (sus 3 dólares)
+    let userPaymentLink = "";
+
+    // Función para iniciar la colaboración
+    document.getElementById("collaborateButton").addEventListener("click", function () {
+      // Solicitar al usuario su enlace de pago (para recibir sus 3 dólares)
+      userPaymentLink = prompt("Por favor, ingresa tu enlace de pago (PayPal, Stripe, etc.) para recibir tus $3:");
+
+      if (userPaymentLink) {
+        // Redirigir al usuario para completar la colaboración de $5
+        alert("Redirigiendo para completar tu colaboración de $5...");
+        window.location.href = creatorPaymentLink; // Primero se pagan los $2 al creador
+      } else {
+        alert("Debes ingresar un enlace de pago válido para continuar.");
+      }
+    });
+
+    // Simular la descarga automática después de la colaboración
+    function simulateDownload() {
+      const content = \`...\`; // Código recursivo (este mismo código)
+      const blob = new Blob([content], { type: "text/html" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "colaboracion_voluntaria.html";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    // Simular descarga después de 5 segundos (esto sería reemplazado por la lógica de la pasarela de pago)
+    setTimeout(simulateDownload, 5000);
+  <\/script>
+</body>
+</html>
+      `;
+
+      const blob = new Blob([content], { type: "text/html" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "colaboracion_voluntaria.html";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    // Simular descarga después de 5 segundos (esto sería reemplazado por la lógica de la pasarela de pago)
+    setTimeout(simulateDownload, 5000);
+  </script>
+</body>
+</html>
